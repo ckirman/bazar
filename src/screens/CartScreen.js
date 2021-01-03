@@ -1,8 +1,12 @@
 import React from 'react';
-import { View, Text, Button, StyleSheet } from 'react-native';
+import { View, Text, Button, StyleSheet,StatusBar } from 'react-native';
+import { useTheme } from '@react-navigation/native';
 
 const CartScreen = () => {
+  const { colors } = useTheme();
+  const theme = useTheme();
     return (
+      
       <View style={styles.container}>
         <Text>Sepet Ekranı</Text>
         <Button

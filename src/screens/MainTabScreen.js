@@ -1,4 +1,5 @@
 import React from 'react';
+import {StatusBar} from 'react-native';
 
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -10,17 +11,20 @@ import CategoriesScreen from './CategoriesScreen';
 import CartScreen from './CartScreen';
 import ProfileScreen from './ProfileScreen';
 import FavouriteScreen from './FavouriteScreen';
-import SplashScreen from './SplashScreen';
+
 
 
 const HomeStack = createStackNavigator();
 const CategoriesStack = createStackNavigator();
 const CartStack = createStackNavigator();
 const FavouriteStack=createStackNavigator();
+const ProfileStack=createStackNavigator();
+;
 
 const Tab = createMaterialBottomTabNavigator();
 
 const MainTabScreen = () => (
+  
     <Tab.Navigator
       initialRouteName="Home"
       activeColor="#fff"
@@ -29,6 +33,7 @@ const MainTabScreen = () => (
         name="Home"
         component={HomeStackScreen}
         options={{
+        
           tabBarLabel: 'Ana Sayfa',
           tabBarColor: '#009387',
           tabBarIcon: ({ color }) => (
@@ -71,7 +76,7 @@ const MainTabScreen = () => (
       />
       <Tab.Screen
         name="Profile"
-        component={ProfileScreen}
+        component={ProfileStackScreen}
         options={{
           tabBarLabel: 'Profil',
           tabBarColor: '#694fad',
@@ -80,6 +85,7 @@ const MainTabScreen = () => (
           ),
         }}
       />
+    
      
     </Tab.Navigator>
 );
@@ -97,6 +103,7 @@ const HomeStackScreen = ({navigation}) => (
         }
     }}>
         <HomeStack.Screen name="Home" component={HomeScreen} options={{
+        
         title:'Ana Sayfa',
         headerLeft: () => (
             <Icon.Button name="ios-menu" size={25} backgroundColor="#009387" onPress={() => navigation.openDrawer()}></Icon.Button>
@@ -142,6 +149,7 @@ const FavouriteStackScreen = ({navigation}) => (
 
 const CartStackScreen = ({navigation}) => (
     <CartStack.Navigator screenOptions={{
+            
             headerStyle: {
             backgroundColor: '#ffc000',
             },
@@ -157,3 +165,21 @@ const CartStackScreen = ({navigation}) => (
             }} />
     </CartStack.Navigator>
     );
+    const ProfileStackScreen = ({navigation}) => (
+      <ProfileStack.Navigator screenOptions={{
+              headerStyle: {
+              backgroundColor: '#694fad',
+              },
+              headerTintColor: '#fff',
+              headerTitleStyle: {
+              fontWeight: 'bold'
+              }
+          }}>
+              <ProfileStack.Screen name="Profil" component={ProfileScreen} options={{
+              headerLeft: () => (
+                  <Icon.Button name="ios-menu" size={25} backgroundColor="#694fad" onPress={() => navigation.openDrawer()}></Icon.Button>
+              )
+              }} />
+      </ProfileStack.Navigator>
+      );
+     

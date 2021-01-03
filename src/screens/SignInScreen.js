@@ -97,15 +97,15 @@ const SignInScreen = ({navigation}) => {
         } );
 
         if ( data.username.length == 0 || data.password.length == 0 ) {
-            Alert.alert('Wrong Input!', 'Username or password field cannot be empty.', [
-                {text: 'Okay'}
+            Alert.alert('Yanlış girdiniz!', 'Kullanıcı adı ve parola boş bırakılamaz', [
+                {text: 'Tamam'}
             ]);
             return;
         }
 
         if ( foundUser.length == 0 ) {
-            Alert.alert('Invalid User!', 'Username or password is incorrect.', [
-                {text: 'Okay'}
+            Alert.alert('Hatalı kullanıcı!', 'Kullanıcı adı veya parola hatalı', [
+                {text: 'Tamam'}
             ]);
             return;
         }
@@ -157,7 +157,7 @@ const SignInScreen = ({navigation}) => {
             </View>
             { data.isValidUser ? null : 
             <Animatable.View animation="fadeInLeft" duration={500}>
-            <Text style={styles.errorMsg}>Username must be 4 characters long.</Text>
+            <Text style={styles.errorMsg}>Kullanıcı adı minimum 4 karakter olmalı.</Text>
             </Animatable.View>
             }
             
@@ -165,7 +165,7 @@ const SignInScreen = ({navigation}) => {
             <Text style={[styles.text_footer, {
                 color: colors.text,
                 marginTop: 35
-            }]}>Password</Text>
+            }]}>Parola</Text>
             <View style={styles.action}>
                 <Feather 
                     name="lock"
@@ -173,7 +173,7 @@ const SignInScreen = ({navigation}) => {
                     size={20}
                 />
                 <TextInput 
-                    placeholder="Your Password"
+                    placeholder="Parolanız"
                     placeholderTextColor="#666666"
                     secureTextEntry={data.secureTextEntry ? true : false}
                     style={[styles.textInput, {
@@ -202,13 +202,13 @@ const SignInScreen = ({navigation}) => {
             </View>
             { data.isValidPassword ? null : 
             <Animatable.View animation="fadeInLeft" duration={500}>
-            <Text style={styles.errorMsg}>Password must be 8 characters long.</Text>
+            <Text style={styles.errorMsg}>Parolanız enaz 8 karakter uzunluğunda olmalı.</Text>
             </Animatable.View>
             }
             
 
             <TouchableOpacity>
-                <Text style={{color: '#009387', marginTop:15}}>Forgot password?</Text>
+                <Text style={{color: '#009387', marginTop:15}}>Şİfremi unuttum?</Text>
             </TouchableOpacity>
             <View style={styles.button}>
                 <TouchableOpacity
@@ -221,7 +221,7 @@ const SignInScreen = ({navigation}) => {
                 >
                     <Text style={[styles.textSign, {
                         color:'#fff'
-                    }]}>Sign In</Text>
+                    }]}>Giriş Yap</Text>
                 </LinearGradient>
                 </TouchableOpacity>
 
@@ -235,7 +235,7 @@ const SignInScreen = ({navigation}) => {
                 >
                     <Text style={[styles.textSign, {
                         color: '#009387'
-                    }]}>Sign Up</Text>
+                    }]}>Kayıt Ol</Text>
                 </TouchableOpacity>
             </View>
         </Animatable.View>

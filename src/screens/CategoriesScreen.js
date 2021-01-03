@@ -1,22 +1,15 @@
 import React from 'react';
-import { View, Text, Button, StyleSheet } from 'react-native';
+import { View, Text, Button, StyleSheet,StatusBar } from 'react-native';
+import { useTheme } from '@react-navigation/native';
 
 const CategoriesScreen = ({navigation}) => {
+  const { colors } = useTheme();
+
+  const theme = useTheme();
     return (
       <View style={styles.container}>
-        <Text>Kategoriler ekranı</Text>
-        <Button
-            title="Kategorilere tekrar gir"
-            onPress={() => navigation.push("Kategoriler")}
-        />
-        <Button
-            title="Go to home"
-            onPress={() => navigation.navigate("Home")}
-        />
-        <Button
-            title="Go back"
-            onPress={() => navigation.goBack()}
-        />
+        
+        <Text style={{color: colors.text}}>Kategoriler ekranı</Text>
       </View>
     );
 };

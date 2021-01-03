@@ -1,14 +1,16 @@
 import React from 'react';
-import { View, Text, Button, StyleSheet } from 'react-native';
+import { View, Text, Button, StyleSheet, StatusBar } from 'react-native';
+import { useTheme } from '@react-navigation/native';
 
-const ProfileScreen = () => {
+const ProfileScreen  = ({navigation}) => {
+  
+  const { colors } = useTheme();
+  const theme = useTheme();
+
     return (
       <View style={styles.container}>
-        <Text>Profile Screen</Text>
-        <Button
-          title="Click Here"
-          onPress={() => alert('Button Clicked!')}
-        />
+        
+        <Text style={{color: colors.text}}>Profile Screen</Text>
       </View>
     );
 };

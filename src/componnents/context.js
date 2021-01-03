@@ -1,3 +1,43 @@
-import React from 'react';
+import React ,{createContext,useState}from 'react';
+import auth from '@react-native-firebase/auth';
 
-export const AuthContext = React.createContext();
+export const AuthContext = createContext();
+
+export const AuthProvider =({children})=>{
+    const [user,setUser]=useState(null);
+
+    return(
+        <AuthContext.Provider
+            value={{
+                user,
+                setUser,
+                signIn:async(email,password)=>{
+                    try{
+                       await auth().signInWithEmailAndPassword(email,password);
+                    }
+                    catch(e){
+                        console.log(e);
+                    }
+                },
+                signUp:async (email,password)=>{
+                    try{
+                        await auth().createUserWithEmailAndPassword(email,password);
+                    }
+                    catch(e){
+                        console.log(e);
+                    }
+                },
+                signOut: async ()=>{
+                    try{
+                        await auth().signOut();
+                    }
+                    catch(e){
+                        console.log(e);
+                    }
+                }
+            }}
+        >
+
+        </AuthContext.Provider>
+    );
+}
